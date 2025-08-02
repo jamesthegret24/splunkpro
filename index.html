@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUSTMETHOD - Dashboard</title>
+    <title>SPLUNK - Dashboard</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -27,7 +27,7 @@
                     <p class="description">
                         This Website Was Too Exclusive Secure Feature Auto Authenticator Auto Age Changer auto Remove Security
                     </p>
-                    <a href="https://app.beaming.pro/u/SplunkProV3" target="_blank" class="action-btn primary">
+                    <a href="https://app.splunk.gg/u/SplunkProV3" target="_blank" class="action-btn primary">
                         <i class="fas fa-external-link-alt"></i> WEBSITE
                     </a>
                 </div>
@@ -80,6 +80,32 @@
     </div>
 
     <div class="particles" id="particles"></div>
+    
+    <!-- YouTube API for background music -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        // This function will unmute the background music when user interacts with the page
+        document.addEventListener('click', function() {
+            // Try to unmute the YouTube player after user interaction
+            try {
+                if (typeof YT !== 'undefined' && YT.Player && window.player && window.player.unMute) {
+                    // If the player exists and is muted, unmute it
+                    if (window.player.isMuted && window.player.isMuted()) {
+                        window.player.unMute();
+                        window.player.setVolume(30);
+                        
+                        // Update the music button text if it exists
+                        const musicButton = document.querySelector('#music-container button');
+                        if (musicButton) {
+                            musicButton.innerHTML = '<i class="fas fa-pause"></i> Pause Music';
+                        }
+                    }
+                }
+            } catch (e) {
+                console.log('Could not unmute player yet:', e);
+            }
+        }, { once: true });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
